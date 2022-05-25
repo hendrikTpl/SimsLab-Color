@@ -30,15 +30,15 @@ def main():
     imgProc = ImgProcessor(img_path)
     #load img
     img_arr = imgProc.load_img()
+    img_h = img_arr.shape[0]
+    img_w = img_arr.shape[1]
     img_ori = np.array(img_arr)
-    print("Image has been loaded: ", img_path)
-    #print(img_arr)
+    print("Image has been loaded: {} size: {}x{}".format(img_path, img_h, img_w))
     ##detect color
     dt_color = imgProc.detectColor(img_arr)
     dt_color = np.array(imgProc.sortDetectColor(dt_color))
     t1_stop = time.process_time()
     print("Color has been detected: ", dt_color)
-    #print(dt_color)
     t2_start = time.process_time()
     temparr, bwtemparr, im2arr_largersmaller = imgProc.processA_B(img_arr,dt_color,rangeTopWhite,rangeLowerWhite)
     #print("temparr: {} \n bwtemarr: {} \n im2arr_largersmaller: {}".format(temparr,bwtemparr, im2arr_largersmaller ) )
@@ -74,19 +74,19 @@ def main():
     # # save to file for thumbnail
     t5_start = time.process_time() # start process thumbnail and watermark A1,A2,A3, .., n-mask images
     for i in range(len(temparr)):
-        img_arr= temparr[i]
-        imgProc.ImgWatermark(imgArr=img_arr, saveto=saveto, fname='A'+str(i+1)+'_thumbnail', ext=".png")
+        #img_arr= temparr[i]
+        imgProc.ImgWatermark(imgArr=temparr[i], saveto=saveto, fname='A'+str(i+1)+'_thumbnail', ext=".png")
     t5_stop = time.process_time() # stop process thumbnail and watermark A1, A2, A3, ..., An
     t6_start = time.process_time() # start process thumbnail and watermark B1,B2,B3, .., n-mask images
     for i in range(len(bwtemparr)):
-        img_arr= bwtemparr[i]
-        imgProc.ImgWatermark(imgArr=img_arr, saveto=saveto, fname='B'+str(i+1)+'_thumbnail', ext=".png")
+        #img_arr= bwtemparr[i]
+        imgProc.ImgWatermark(imgArr=bwtemparr[i], saveto=saveto, fname='B'+str(i+1)+'_thumbnail', ext=".png")
     t6_stop = time.process_time() # stop process thumbnail and watermark B1, B2, B3, ..., Bn
     #1,2,..., n image
     t7_start = time.process_time() # start process thumbnail and watermark 1,2,3, .., n-mask images
     for i in range(len(bwtemparrAL)):
-        img_arr= bwtemparrAL[i]
-        imgProc.ImgWatermark(imgArr=img_arr, saveto=saveto, fname=str(i+1)+'_thumbnail', ext=".png")
+        #img_arr= bwtemparrAL[i]
+        imgProc.ImgWatermark(imgArr=bwtemparrAL[i], saveto=saveto, fname=str(i+1)+'_thumbnail', ext=".png")
     t7_stop = time.process_time() # stop process thumbnail and watermark 1, 2, 3, ..., n
     # AL image
     t8_start = time.process_time() # start process thumbnail and watermark AL image
