@@ -1,0 +1,245 @@
+<!--This base templates serve as parent to other views-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SimsLab-Color</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        
+        .sidenav {
+            padding-top: 20px;
+            background-color: #cddde4;
+            height: 100%;
+        }
+        
+        #top-info-bar {
+            padding-top: 20px;
+            background-color: #cddde4;
+            height: 100%;
+        }
+        
+        #left-info-guidelines {
+            border-radius: 5px;
+            padding-top: 20px;
+            background-color: #cddde4;
+            height: 150px;
+        }
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        
+        .row.content {
+            height: 100%
+        }
+        /* Set gray background color and 100% height */
+        /* On small screens, set height to 'auto' for the grid */
+        
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+        /* Set black background color, white text and some padding */
+        
+        header {
+            background-color: rgb(0, 105, 146);
+            color: white;
+            padding: 30px;
+            height: 100%;
+            margin-top: auto;
+        }
+        
+        .grad3 {
+            height: 100px;
+            background-color: rgb(22, 75, 167);
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(180deg, rgb(15, 106, 159), rgb(219, 247, 246));
+        }
+        
+        .flex-wrapper {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        footer {
+            background-color: rgb(0, 105, 146);
+            color: white;
+            padding: 30px;
+            margin-top: auto;
+            height: 100%;
+        }
+        
+        #resp-table {
+            width: 100%;
+            display: table;
+        }
+        
+        #resp-table-caption {
+            display: table-caption;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        
+        #resp-table-header {
+            display: table-header-group;
+            background-color: rgb(81, 172, 194);
+            font-weight: bold;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+        
+        .table-header-cell {
+            display: table-cell;
+            padding: 10px;
+            text-align: justify;
+            border-bottom: 1px solid rgb(87, 84, 84);
+        }
+        
+        #resp-table-body {
+            display: table-row-group;
+        }
+        
+        .resp-table-row {
+            display: table-row;
+        }
+        
+        .table-body-cell {
+            display: table-cell;
+        }
+        
+        #resp-table-footer {
+            display: table-footer-group;
+            background-color: rgb(81, 172, 194);
+            font-weight: bold;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+        
+        .table-footer-cell {
+            display: table-cell;
+            padding: 10px;
+            text-align: justify;
+            border-bottom: 1px solid rgb(97, 97, 97);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header-here -->
+    <header>
+        <h2>SimsLab-Color</h2>
+    </header>
+    <!-- dashboard-here -->
+    <nav class="navbar navbar-inverse visible-xs ">
+        <div class="container-fluid ">
+            <div class="navbar-header ">
+                <button type="button " class="navbar-toggle " data-toggle="collapse " data-target="#myNavbar ">
+                    <span class="icon-bar "></span>
+                    <span class="icon-bar "></span>
+                    <span class="icon-bar "></span>                        
+                </button>
+                <!-- <a class="navbar-brand " href="# ">Logo</a> -->
+            </div>
+            <div class="collapse navbar-collapse " id="myNavbar ">
+                <ul class="nav navbar-nav ">
+                    <li class="active "><a href="/home ">Home</a></li>
+                    <li><a href="/add ">Add Image</a></li>
+                    <li><a href="/search ">Search</a></li>
+                    <li><a href="/guide ">Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- content here -->
+    <div class="container-fluid ">
+        <div class="row content">
+            <div class="col-sm-12">
+                <!-- ini menu samping default-->
+                <div class="col-sm-3 sidenav hidden-xs ">
+                    <ul class="nav nav-pills nav-stacked ">
+                        <li class="active "><a href="/home ">Home</a></li>
+                        <li><a href="/add ">Add Image</a></li>
+                        <li><a href="/search ">Search</a></li>
+                        <li><a href="/guide ">Guide</a></li>
+                    </ul>
+                    <!-- ini menu tambahan -->
+                    <div>
+                        {% block menu_left %} {% endblock %}
+                    </div>
+                </div>
+                <!-- block top info bar -->
+                <div class="col-sm-9" id="top-info-bar">
+                    <div>
+                        <ul class="nav navbar-nav navbar-right ">
+                            <!-- <li> <span class="glyphicon glyphicon-log-in "></span> <button class="btn btn-info " onclick=" window.open( 'http://deepx.id', '_blank') ">Dev Team</button></li> -->
+                            <li> <span class="glyphicon glyphicon-log-in "><a href="/admin/" target="_blank" class="btn btn-info">Admin</a></span></li>
+                        </ul>
+                    </div>
+
+                    {% block info_top %} {% endblock %}
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row content ">
+            <!-- info samping petunjuk -->
+            <div class="col-sm">
+                <!-- ini kiri -->
+                {% block kiri %} {% endblock %}
+            </div>
+            <!-- extend templates dari function views disini -->
+            <div class="col-sm-9 ">
+                <div class="well ">
+                    <!-- <p>Main Display</p> -->
+                    {% block status %} {% endblock %}
+                    <div>
+                        {% block display %} {% endblock %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm">
+                <!-- ini kanan -->
+                {% block kanan %} {% endblock %}
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="flex-wrapper ">
+        <!-- disini footer -->
+        <footer class="container-fluid text-center ">
+            <copyright>Copyright &copy; SimsLab 2022</copyright>
+        </footer>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js "></script>
+    <!-- Bootstrap 4 Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+
+
+</body>
+
+</html>

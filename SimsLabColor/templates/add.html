@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block status %} {% load crispy_forms_tags %}
+<div class="alert alert-info">
+    <strong>Info!</strong>
+    <p>
+        Add the original image (type A image) to the database. then the image will be processed and the result will be stored in the database.
+    </p>
+</div>
+{% endblock %} {% block display %}
+<!-- <div class="container" style="margin-top: 200px"> -->
+<div>
+    <h2>Add Original Image</h2>
+    <hr class="my-4">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %} {{addform.img_category|as_crispy_field}} {{addform.img_id|as_crispy_field}} {{addform.n_color|as_crispy_field}} {{addform.img_label|as_crispy_field}} {{addform.img_file|as_crispy_field}}
+        <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk-circle-arrow-right"></i>Add Image</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block status %}
+<div class="alert alert-info">
+    <h3>Image Processing</h3>
+    <strong>Info!</strong>
+    <p>
+        The original Images A is in processing (from A -> A1,...,An -> B1,...,Bn -> 1,...,n -> to AL) and It will takes sometimes according to the size of the image.
+        <italic>Do not closed this until it is done</italic>
+    </p>
+</div>
+{% endblock %} {% block display %}
+
+<div class="container">
+
+    {% for img2proc in img_ori %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="alert alert-light">
+                Image ID: {{img2proc.img_id}} <br> Category: {{img2proc.img_category}} <br> Number of Colors: {{img2proc.n_color}} <br> Label: {{img2proc.img_label}}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="{{ img2proc.img_file.url }}" width="100" height="100">
+        </div>
+        <div class="col-md-6">
+            <form action="/process_img/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="pix_modify"> Process Image with Pixel adjustment (between 1 and 10):</label>
+                <input type="range" id="pix_modify" name="pix_modify" min="1" max="10">
+                <input type="hidden" name="id_" value="{{ img2proc.id }}">
+                <input type="hidden" name="img_cat_" value="{{ img2proc.img_category }}">
+                <input type="hidden" name="img_id_" value="{{ img2proc.img_id }}">
+                <input type="hidden" name="img_color_" value="{{ img2proc.n_color }}">
+                <button type="submit" class="btn btn-success">Process Image</button>
+            </form>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

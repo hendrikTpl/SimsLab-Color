@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% load static %} {% block display %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <strong><h2> Display Processed {{show_real.img_type}} Image </h2></strong>
+            <div class="alert alert-light">
+                <p><strong>Image Info</strong>
+                    <ul>
+                        <li>Category:{{show_real.img_category}}</li>
+                        <li>Image ID:{{show_real.img_id}}</li>
+                        <li>Size(hxw):{{show_real.img_h}} x {{show_real.img_w}}</li>
+                        <li>Type:{{show_real.img_type}}</li>
+                        <li>RGB:{{show_real.isRGB}}</li>
+                        <li>Label:{{show_real.img_label}}</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <img src="{{show_real.img_thumbs.url}}" height="500" width="500">
+        </div>
+    </div>
+    <hr>
+    <div class="alert alert-danger">
+        <p>
+            <strong>This</strong> image has been resize to 500x500 pixels and converted into png format. This image has also watermarked for the Copyright purpose. The real processed image without watermarked is in
+            <strong>TIF</strong> format and can be downloaded from the link below.
+        </p>
+        <a href="{{show_real.img_file.url}}" download="{{show_real.img_file.url}}" class="btn btn-success"> Download Images</a>
+    </div>
+</div>
+{% endblock %}

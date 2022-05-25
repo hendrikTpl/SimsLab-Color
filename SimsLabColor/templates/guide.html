@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% load static %} {% block display %}
+<div class="col-sm">
+    <div class="alert alert-light">
+        <h3>Algorithms Flow</h3>
+        <img src="{% static 'images/workflow.png' %}" width="90%">
+    </div>
+
+    <div class="alert alert-light">
+        <strong>Guideline</strong>
+        <p>
+            <ul>
+                <li>Home Menu -> Display last fives original image added and last two processed images</li>
+                <li>Add Menu -> Add initial original images then followed the processed images</li>
+                <li>Search Menu -> Search all processed images by given Image ID in databases</li>
+                <li>Admin -> Login to the Admin to edit and delete data</li>
+            </ul>
+        </p>
+    </div>
+    <div class="alert alert-light">
+        <strong>ToDO</strong>
+        <p>
+            <ul>
+                <li>Add Progres bar and process the images in the background, so the user will not disturbed by long processing time</li>
+                <li>Speed up the Backend</li>
+                <ul>
+                    <li>reduce for loop usage</li>
+                    <li>optimize database query usage</li>
+                    <li>Process the image using GPU</li>
+                    <li>Try more efficient algorithms rather than Pixel-Based Method</li>
+                </ul>
+                <li>Add image processing algorithms by Category(now only 1_Sharp_Edge is functional)</li>
+                <ul>
+                    <li>For example:</li>
+                    <li>if Image Category is Sharp_Edge then Perform Sharp_Edge_ImgProcessor</li>
+                    <li>if Image Category is Blury_Edge then Perform Blury_Edge_ImgProcessor</li>
+                    <li> and so on</li>
+                </ul>
+                <li>Add regular user login to access the apps for download restristed</li>
+                <li>Clean Debugging and Validation</li>
+                <li>Migrate to Docker Container</li>
+            </ul>
+        </p>
+
+    </div>
+    <div class="alert alert-danger">
+
+        <strong>Notes</strong>
+        <p>
+            Most Browser (Chrome, Firefox) will not support <strong>Tif FIle</strong> format. Only safary support <strong>Tif File</strong> format.
+        </p>
+
+    </div>
+</div>
+{% endblock %}

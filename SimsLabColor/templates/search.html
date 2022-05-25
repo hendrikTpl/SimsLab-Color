@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %} {% block display %}
+<div>
+    <!-- Search Start -->
+    <div class="jumbotron border shadow">
+        <div class="row">
+            <div class="col-sm-9">
+                <form>
+                    <div class="col-sm-9">
+                        <input name="qry_search" type="text" placeholder="Image ID" class="form-control form-control-lg" />
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-success">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Search -->
+
+    <!-- Show Result Start -->
+    <div id="resp-table">
+        <div id="resp-table-caption">
+            List Processed Images
+        </div>
+        <div id="resp-table-header">
+            <div class="table-header-cell">
+                Category
+            </div>
+            <div class="table-header-cell">
+                Image ID
+            </div>
+            <div class="table-header-cell">
+                Colors
+            </div>
+            <div class="table-header-cell">
+                Type
+            </div>
+            <div class="table-header-cell">
+                Size
+            </div>
+            <div class="table-header-cell">
+                isRGB
+            </div>
+            <div class="table-header-cell">
+                Label
+            </div>
+            <div class="table-header-cell">
+                Image
+            </div>
+        </div>
+        <!-- body -->
+        <div id="resp-table-body">
+            {% for qry in search %}
+            <div class="resp-table-row">
+                <div class="table-body-cell">
+                    {{ qry.img_category}}
+                </div>
+                <div class="table-body-cell">
+                    {{ qry.img_id}}
+                </div>
+                <div class="table-body-cell">
+                    {{ qry.n_color}}
+                </div>
+                <div class="table-body-cell">
+                    {{ qry.img_type}}
+                </div>
+                <div class="table-body-cell">
+                    {{ qry.img_h}} x {{ qry.img_w}}
+                </div>
+                <div class="table-body-cell">
+                    {{qry.isRGB}}
+                </div>
+                <div class="table-body-cell">
+                    {{ qry.img_label}}
+                </div>
+                <div class="table-body-cell">
+                    {% if qry.img_thumbs %}
+                    <img src="{{ qry.img_thumbs.url}}" width="50" height="50">
+                    <a href="/show_real/{{ qry.id }}" class="btn btn-success">View</a> {% else %}
+                    <img src="{% static 'images/no_images.jpg' %}" width="50" height="50"> {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="resp-table-footer">
+        </div>
+    </div>
+</div>
+{% endblock %}

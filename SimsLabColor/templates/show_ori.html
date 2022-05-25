@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load static %} {% block display %}
+<div>
+
+    <div class="alert alert-info">
+        <p><strong>Image Info</strong>
+            <ul>
+                <li>Category:{{show_ori.img_category}}</li>
+                <li>Image ID:{{show_ori.img_id}}</li>
+                <li>Label:{{show_ori.img_label}}</li>
+                <li>Size(hxw):{{img_info.img_h}} x {{img_info.img_w}}</li>
+            </ul>
+
+        </p>
+    </div>
+    <!-- <embed width=500 height=500 src="{{show_ori.img_file.url}}" type="image/tiff" negative=yes> -->
+
+    <img src="{{show_ori.img_thumbs.url}}" height="500" width="500">
+</div>
+{% endblock %}

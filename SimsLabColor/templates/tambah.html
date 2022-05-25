@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %} {% block display %}
+<div>
+    <h1>Tambah</h1>
+
+    <form action="tambah_proc/" method="post">
+        {% csrf_token %} Image ID:<br>
+        <input name="img_id_">
+        <br><br> Category:<br>
+        <input name="img_cat_">
+        <br><br>Color:<br>
+        <input name="img_color_">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

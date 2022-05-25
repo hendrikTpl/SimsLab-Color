@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} {% block display %}
+<div>
+    {% for x in coba %}
+    <div>
+        <div>{{x.id}}</div>
+        <div>{{x.img_id}}</div>
+        <div>{{x.img_category}}</div>
+        <div>{{x.n_color}}</div>
+        <div><a href="/hapus/{{ x.id }}" class="btn btn-danger">hapus</a></div>
+    </div>
+    {% endfor %}
+</div>
+<a href="/tambah" class="btn btn-success">tambah</a> {% endblock %}

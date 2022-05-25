@@ -1,0 +1,12 @@
+{% extends 'base.html'%} {% block display %}
+<div>
+    <p><b>Category: </b>
+        <select name="img_category" class="form-control">
+  {% for results in showcateg %}
+           <option value="{{ results.id}}">{{ results.img_category}}_{{ results.img_id}}</option>
+  {% endfor %}
+        </select>
+    </p>
+</div>
+
+{% endblock %}

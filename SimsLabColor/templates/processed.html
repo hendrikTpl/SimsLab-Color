@@ -1,0 +1,23 @@
+{% extends 'home.html' %} {% load static %} {% block display %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="alert alert-info">
+                {{img_proc_info}} {{img_ori_info}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-succes">
+                <img src="{{img_ori_info.img_thumbs.url}}" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-succes">
+                <img src="{{img_proc_info.img_thumbs.url}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
