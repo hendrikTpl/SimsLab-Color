@@ -2,7 +2,6 @@ import os
 import numpy as np
 import math
 import collections
-import numpy as np
 import functools
 from numpy.lib.stride_tricks import as_strided
 from matplotlib.pyplot import imshow
@@ -203,6 +202,15 @@ class ImgProcessor():
         # add watermark
         draw.text(watermark_pos, watermark, color=clr, font=fnt, stroke_width=stroke_width, stroke_fill=stroke_fill)
         watermark_image.save(os.path.join(saveto, fname+ext))
+        
+class BluryImgProc(object):
+    pass
+class ScanImgProc(object):
+    pass
+class DyedImgProc(object):
+    pass
+
+
     
         
         

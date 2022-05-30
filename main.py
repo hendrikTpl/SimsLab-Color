@@ -5,14 +5,14 @@ from MyUtils.ImgProcessor import *
 
 def main():
     #settings
-    img_src = './img_src/1_Sharp_Edge/01/LIU0097/'
+    img_src = './img_src/1_Sharp_Edge/03/LIU0125'
     img_name = 'A.tif'
-    img_res = './img_result/1_Sharp_Edge/01/LIU0097/'
+    img_res = './img_result/1_Sharp_Edge/03/LIU0125/'
     img_path = os.path.join(img_src, img_name) 
     # settings for color boundary
     rangeTopWhite = 255
-    rangeLowerWhite = 248
-    pix_modify = int(3)
+    rangeLowerWhite = 240
+    pix_modify = int(1)
         
     # If folder doesn't exist, then create it.
     directory = os.path.dirname(img_res)
